@@ -3,7 +3,7 @@ package animals
 type Animal struct {
 	ID        int    `json:"id"`
 	Name      string `json:"name"`
-	Species   string `json:"species"`
-	Age       int    `json:"age"`
+	Class     string `json:"class"`
+	Legs      int    `json:"legs"`
 	CreatedAt string `json:"created_at"`
 }

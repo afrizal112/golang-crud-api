@@ -14,8 +14,8 @@ func NewAnimalRepository(db *sql.DB) *AnimalRepository {
 
 // Create a new animal
 func (r *AnimalRepository) Create(animal *Animal) error {
-	sqlStatement := `INSERT INTO animals (id, name, species, age) VALUES ($1, $2, $3, $4)`
-	_, err := r.DB.Exec(sqlStatement, animal.ID, animal.Name, animal.Species, animal.Age)
+	sqlStatement := `INSERT INTO animals (id, name, class, legs) VALUES ($1, $2, $3, $4)`
+	_, err := r.DB.Exec(sqlStatement, animal.ID, animal.Name, animal.Class, animal.Legs)
 	return err
 }
 
@@ -30,7 +30,7 @@ func (r *AnimalRepository) GetAll() ([]Animal, error) {
 
 	for rows.Next() {
 		var animal Animal
-		err := rows.Scan(&animal.ID, &animal.Name, &animal.Species, &animal.Age, &animal.CreatedAt)
+		err := rows.Scan(&animal.ID, &animal.Name, &animal.Class, &animal.Legs, &animal.CreatedAt)
 		if err != nil {
 			return nil, err
 		}
@@ -41,8 +41,8 @@ func (r *AnimalRepository) GetAll() ([]Animal, error) {
 
 // Update animal by ID
 func (r *AnimalRepository) Update(id int, animal *Animal) error {
-	sqlStatement := `UPDATE animals SET name=$1, species=$2, age=$3 WHERE id=$4`
-	_, err := r.DB.Exec(sqlStatement, animal.Name, animal.Species, animal.Age, id)
+	sqlStatement := `UPDATE animals SET name=$1, Class=$2, Legs=$3 WHERE id=$4`
+	_, err := r.DB.Exec(sqlStatement, animal.Name, animal.Class, animal.Legs, id)
 	return err
 }
 
@@ -56,8 +56,8 @@ func (r *AnimalRepository) Delete(id int) error {
 // GetByID fetches an animal by its ID
 func (r *AnimalRepository) GetByID(id int) (*Animal, error) {
 	var animal Animal
-	err := r.DB.QueryRow("SELECT id, name, species, age FROM animals WHERE id = $1", id).Scan(
-		&animal.ID, &animal.Name, &animal.Species, &animal.Age,
+	err := r.DB.QueryRow("SELECT id, name, class, legs FROM animals WHERE id = $1", id).Scan(
+		&animal.ID, &animal.Name, &animal.Class, &animal.Legs,
 	)
 	if err == sql.ErrNoRows {
 		return nil, nil // Return nil if no animal found
