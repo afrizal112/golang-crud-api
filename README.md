@@ -10,7 +10,7 @@
 
  ## API Endpoints:
 - POST: `http://localhost:8081/animal`
-- PUT `http://localhost:8081/animal/{id}`
-- DELETE `http://localhost:8081/animal/{id}`
-- GET `http://localhost:8081/animals`
-- GET `http://localhost:8081/animal/{id}`
+- PUT: `http://localhost:8081/animal/{id}`
+- DELETE: `http://localhost:8081/animal/{id}`
+- GET: `http://localhost:8081/animals`
+- GET: `http://localhost:8081/animal/{id}`
