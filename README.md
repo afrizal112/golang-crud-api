@@ -14,3 +14,6 @@
 - DELETE: `http://localhost:8081/animal/{id}`
 - GET: `http://localhost:8081/animals`
 - GET: `http://localhost:8081/animal/{id}`
+
+ ## API Documentation:
+ Postman Collection : https://documenter.getpostman.com/view/38755939/2sAXxLDEuj
