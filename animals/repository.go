@@ -30,7 +30,7 @@ func (r *AnimalRepository) GetAll() ([]Animal, error) {
 
 	for rows.Next() {
 		var animal Animal
-		err := rows.Scan(&animal.ID, &animal.Name, &animal.Class, &animal.Legs, &animal.CreatedAt)
+		err := rows.Scan(&animal.ID, &animal.Name, &animal.Class, &animal.Legs)
 		if err != nil {
 			return nil, err
 		}
