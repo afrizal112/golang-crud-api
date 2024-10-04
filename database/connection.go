@@ -11,9 +11,9 @@ import (
 func InitDB() (*sql.DB, error) {
 	const (
 		host     = "localhost"
-		port     = 5432
-		user     = "postgres"
-		password = "mysecretpassword"
+		port     = 55432
+		user     = "user"
+		password = "password"
 		dbname   = "animaldb"
 	)
 
