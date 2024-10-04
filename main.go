@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/yourusername/golang-crud-api/database"
-	"github.com/yourusername/golang-crud-api/pkg/router"
+	"github.com/afrizal112/golang-crud-api/database"
+	"github.com/afrizal112/golang-crud-api/pkg/router"
 )
 
 func main() {

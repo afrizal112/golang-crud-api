@@ -3,8 +3,8 @@ package router
 import (
 	"database/sql"
 
+	"github.com/afrizal112/golang-crud-api/animals"
 	"github.com/gorilla/mux"
-	"github.com/yourusername/golang-crud-api/animals"
 )
 
 func InitRouter(db *sql.DB) *mux.Router {
