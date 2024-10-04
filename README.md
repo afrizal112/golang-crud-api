@@ -10,8 +10,8 @@
 4. now make connection to database using program tableplus,dbeaver,etc to import animal.sql for table use by the api ![Capture](https://github.com/user-attachments/assets/e14ab721-f4f1-4819-a5c5-1975ab0643bf)
  ![image_2024-10-04_160219933](https://github.com/user-attachments/assets/4382172a-1c56-479b-86b1-0aaba2e38043)
 5. in project open terminal in vcode folder to Run the application: 'go run main.go' ![image_2024-10-04_160818000](https://github.com/user-attachments/assets/b1bea454-96a9-4f99-933a-35a711fd3216)
+6. now you can test the api using program like postman ![image_2024-10-04_161809083](https://github.com/user-attachments/assets/acc23f13-b881-49d4-a568-c9633f3ce87f)
 
-6. now you can test the api using program like postman.
 
  ## API Endpoints:
 - POST: `http://localhost:8081/animal`
