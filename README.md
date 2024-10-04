@@ -7,6 +7,7 @@
 1. Clone the repository
 2. in project folder to Run the database: docker-compose up -d
 3. in project folder to Run the application: go run main.go
+4. now you can test the api using program like postman
 
  ## API Endpoints:
 - POST: `http://localhost:8081/animal`
