@@ -27,6 +27,3 @@ func (s *AnimalService) UpdateAnimal(id int, animal *Animal) error {
 func (s *AnimalService) DeleteAnimal(id int) error {
 	return s.Repo.Delete(id)
 }
-func (s *AnimalService) GetAnimalByName(name string) (*Animal, error) {
-	return s.Repo.GetByName(name)
-}

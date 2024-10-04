@@ -24,13 +24,18 @@ func (h *AnimalHandler) CreateAnimal(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Check if animal already exists
-	existingAnimal, _ := h.Service.GetAnimalByName(animal.Name) // Assuming GetAnimalByName is available in service
+	// Check if animal with the same ID already exists
+	existingAnimal, err := h.Service.GetAnimalByID(animal.ID)
+	if err != nil {
+		http.Error(w, "Error checking for existing animal", http.StatusInternalServerError)
+		return
+	}
 	if existingAnimal != nil {
-		http.Error(w, "Animal already exists", http.StatusConflict)
+		http.Error(w, "Animal with the specified ID already exists", http.StatusConflict)
 		return
 	}
 
+	// If not exists, create the animal
 	if err := h.Service.CreateAnimal(&animal); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return

@@ -14,8 +14,8 @@ func NewAnimalRepository(db *sql.DB) *AnimalRepository {
 
 // Create a new animal
 func (r *AnimalRepository) Create(animal *Animal) error {
-	sqlStatement := `INSERT INTO animals (name, species, age) VALUES ($1, $2, $3)`
-	_, err := r.DB.Exec(sqlStatement, animal.Name, animal.Species, animal.Age)
+	sqlStatement := `INSERT INTO animals (id, name, species, age) VALUES ($1, $2, $3, $4)`
+	_, err := r.DB.Exec(sqlStatement, animal.ID, animal.Name, animal.Species, animal.Age)
 	return err
 }
 
@@ -53,25 +53,10 @@ func (r *AnimalRepository) Delete(id int) error {
 	return err
 }
 
+// GetByID fetches an animal by its ID
 func (r *AnimalRepository) GetByID(id int) (*Animal, error) {
 	var animal Animal
-	sqlStatement := `SELECT id, name, species, age, created_at FROM animals WHERE id=$1`
-	row := r.DB.QueryRow(sqlStatement, id)
-
-	err := row.Scan(&animal.ID, &animal.Name, &animal.Species, &animal.Age, &animal.CreatedAt)
-	if err != nil {
-		if err == sql.ErrNoRows {
-			return nil, nil // No animal found
-		}
-		return nil, err
-	}
-	return &animal, nil
-}
-
-// GetByName fetches an animal by its name
-func (r *AnimalRepository) GetByName(name string) (*Animal, error) {
-	var animal Animal
-	err := r.DB.QueryRow("SELECT id, name, species, age FROM animals WHERE name = $1", name).Scan(
+	err := r.DB.QueryRow("SELECT id, name, species, age FROM animals WHERE id = $1", id).Scan(
 		&animal.ID, &animal.Name, &animal.Species, &animal.Age,
 	)
 	if err == sql.ErrNoRows {
